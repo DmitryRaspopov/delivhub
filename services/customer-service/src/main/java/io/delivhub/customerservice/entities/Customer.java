@@ -26,9 +26,6 @@ public class Customer {
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "city", nullable = false)
-    private String city;
-
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
@@ -48,4 +45,9 @@ public class Customer {
     @Setter(AccessLevel.NONE)
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    //Поля для связей
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", nullable = false)
+    private City city;
 }
