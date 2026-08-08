@@ -2,6 +2,9 @@ package io.delivhub.customerservice.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,16 +16,17 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "customers")
+@EntityListeners(AuditingEntityListener.class)
 public class Customer {
     @Id
-    @GeneratedValue
-    @Column(name = "id", updatable = false)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(nullable = false, updatable = false)
     private UUID id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "city", nullable = false) // TODO: скорее всего нужна сущность или city_id
+    @Column(name = "city", nullable = false)
     private String city;
 
     @Column(name = "phone_number", nullable = false)
@@ -34,7 +38,14 @@ public class Customer {
     @Column(name = "avatar_image_url")
     private String avatarImageUrl;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
+    // Поля для статистики
+    @CreatedDate
+    @Setter(AccessLevel.NONE)
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
 
+    @LastModifiedDate
+    @Setter(AccessLevel.NONE)
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }
