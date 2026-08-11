@@ -1,4 +1,4 @@
-package io.delivhub.customerservice.dtos.response.customer;
+package io.delivhub.customerservice.dtos.response;
 
 import lombok.Builder;
 
