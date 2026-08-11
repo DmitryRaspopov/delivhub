@@ -43,6 +43,10 @@
             <artifactId>spring-boot-starter-webmvc</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
@@ -108,7 +112,16 @@
                                     <groupId>org.projectlombok</groupId>
                                     <artifactId>lombok</artifactId>
                                 </path>
+                                <path>
+                                    <groupId>org.mapstruct</groupId>
+                                    <artifactId>mapstruct-processor</artifactId>
+                                </path>
                             </annotationProcessorPaths>
+                            <compilerArgs>
+                                <compilerArg>
+                                    -Amapstruct.defaultComponentModel=spring
+                                </compilerArg>
+                            </compilerArgs>
                         </configuration>
                     </execution>
                     <execution>
