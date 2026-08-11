@@ -1,6 +1,6 @@
 package io.delivhub.customerservice.services;
 
-import io.delivhub.customerservice.dtos.response.customer.CustomerResponse;
+import io.delivhub.customerservice.dtos.response.CustomerResponse;
 import io.delivhub.customerservice.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;

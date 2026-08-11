@@ -1,6 +1,6 @@
 package io.delivhub.customerservice.controllers;
 
-import io.delivhub.customerservice.dtos.response.customer.CustomerResponse;
+import io.delivhub.customerservice.dtos.response.CustomerResponse;
 import io.delivhub.customerservice.services.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
