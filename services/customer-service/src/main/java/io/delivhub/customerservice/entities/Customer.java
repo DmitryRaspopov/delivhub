@@ -23,14 +23,8 @@ public class Customer {
     @Column(nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
-
-    @Column(name = "email")
-    private String email;
 
     @Column(name = "avatar_image_url")
     private String avatarImageUrl;
