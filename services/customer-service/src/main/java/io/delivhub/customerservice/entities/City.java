@@ -7,7 +7,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,21 +16,17 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "customers")
+@Table(name = "cities")
 @EntityListeners(AuditingEntityListener.class)
-public class Customer {
+public class City {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(nullable = false, updatable = false)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "phone_number", nullable = false)
-    private String phoneNumber;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "avatar_image_url")
-    private String avatarImageUrl;
-
-    // Поля для статистики
+    //Поля для статистики
     @CreatedDate
     @Setter(AccessLevel.NONE)
     @Column(name = "created_at", updatable = false)
@@ -41,7 +38,7 @@ public class Customer {
     private LocalDateTime updatedAt;
 
     //Поля для связей
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id", nullable = false)
-    private City city;
+    @Builder.Default
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    private List<Customer> customers = new ArrayList<>();
 }
