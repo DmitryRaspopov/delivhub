@@ -18,8 +18,10 @@ public interface CustomerMapper {
     @Mapping(target = "cityId", source = "city.id")
     CustomerResponse toDto(Customer customer);
 
+    @Mapping(target = "id", ignore = true)
     Customer toEntity(CreateCustomerRequest dto, City city);
 
+    @Mapping(target = "id", ignore = true)
     Customer updateCustomerFromDto(
             UpdateCustomerRequest dto,
             @MappingTarget Customer customer,
