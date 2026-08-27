@@ -1,23 +1,19 @@
 package io.delivhub.customerservice.dtos.request.customer;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.NumberFormat;
 
 @Builder
-public record CreateCustomerRequest(
-        @NotNull(message = "Phone number is required")
+public record UpdateCustomerRequest(
         @NumberFormat(style = NumberFormat.Style.NUMBER)
         String phoneNumber,
 
         @URL(message = "Invalid image URL")
         String avatarImageUrl,
 
-        @NotNull(message = "City is required")
         @Positive(message = "Invalid city ID ")
         Long cityId
 ) {
-
 }
