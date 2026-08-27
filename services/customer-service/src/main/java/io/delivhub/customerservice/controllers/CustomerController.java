@@ -7,6 +7,7 @@ import io.delivhub.customerservice.services.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/customers")
 @RequiredArgsConstructor
+@Tag(name = "Customers", description = "Операции с клиентами")
 public class CustomerController {
     private final CustomerService customerService;
 
