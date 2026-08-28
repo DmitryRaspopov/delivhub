@@ -26,11 +26,18 @@ import java.util.UUID;
 public class CustomerController {
     private final CustomerService customerService;
 
+    @Operation(summary = "Получение клиента по ID")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Клиент найден"),
+            @ApiResponse(responseCode = "404", description = "Клиент не найден")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<CustomerResponse> getById(@PathVariable UUID id) {
         return ResponseEntity.ok(customerService.getById(id));
     }
 
+    @Operation(summary = "Получение списка всех клиентов с пагинацией")
+    @ApiResponse(responseCode = "200", description = "Список успешно получен")
     @GetMapping
     public ResponseEntity<Page<CustomerResponse>> findAll(Pageable pageable) {
         return ResponseEntity.ok(customerService.findAll(pageable));
