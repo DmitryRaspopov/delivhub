@@ -10,10 +10,10 @@ public record UpdateCustomerRequest(
         @NumberFormat(style = NumberFormat.Style.NUMBER)
         String phoneNumber,
 
-        @URL(message = "Invalid image URL")
+        @URL(message = "{validation.customer.avatarImageUrl.url}")
         String avatarImageUrl,
 
-        @Positive(message = "Invalid city ID ")
+        @Positive(message = "{validation.customer.city.positive}")
         Long cityId
 ) {
 }

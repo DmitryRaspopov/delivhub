@@ -8,15 +8,15 @@ import org.springframework.format.annotation.NumberFormat;
 
 @Builder
 public record CreateCustomerRequest(
-        @NotNull(message = "Phone number is required")
+        @NotNull(message = "{validation.customer.phoneNumber.notNull}")
         @NumberFormat(style = NumberFormat.Style.NUMBER)
         String phoneNumber,
 
-        @URL(message = "Invalid image URL")
+        @URL(message = "{validation.customer.avatarImageUrl.url}")
         String avatarImageUrl,
 
-        @NotNull(message = "City is required")
-        @Positive(message = "Invalid city ID ")
+        @NotNull(message = "{validation.customer.city.notNull}")
+        @Positive(message = "{validation.customer.city.positive}")
         Long cityId
 ) {
 
